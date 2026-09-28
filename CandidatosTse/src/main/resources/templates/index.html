@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Senha</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="Container">
+    
+    <div class="form">
+        <form method="get" th:action="@{/}">
+            <input type="number" name="idadeMin" th:value="${idadeMin}">
+            <input type="number" name="idadeMax" th:value="${idadeMax}">
+        </form>
+    </div>
+
+    <label>
+        <input type="radio" name="genero" value="" th:checked="${generoSelecionado == ''}">
+        Todos
+    </label>
+    <label th:each="g : ${generos}">
+        <input type="radio" name="genero" th:value="S{g}" th:checked="{g == generoSelecionado}">
+        <span th:text="${g}">Gênero</span>
+    </label>
+
+    <select name="escolaridade">
+        <option value="" th:selected="${escolaridadeSelecionada == ''}"
+        th:value="S{e}"
+        th:text="${e}"
+        th:selected="${e == escolaridadeSelecionada}"></option>
+    </select>
+</div>
+</body>
+</html>
